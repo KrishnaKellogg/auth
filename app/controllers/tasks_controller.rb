@@ -1,19 +1,25 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
-    @task = Task.new
+    if @current_user
+      @tasks = Task.all
+      @task = Task.new
+    end
   end
 
   def create
-    @task = Task.new
-    @task["description"] = params["task"]["description"]
-    @task.save
-    redirect_to "/tasks"
+    if @current_user
+      @task = Task.new
+      @task["description"] = params["task"]["description"]
+      @task.save
+      redirect_to "/tasks"
+    end
   end
 
   def destroy
-    @task = Task.find_by({ "id" => params["id"] })
-    @task.destroy
-    redirect_to "/tasks"
+    if @current_user
+      @task = Task.find_by({ "id" => params["id"] })
+      @task.destroy
+      redirect_to "/tasks"
+    end
   end
 end
