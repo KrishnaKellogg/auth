@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
       else 
       flash["notice"] = "Nope."
       redirect_to "/sessions/new"
-      end
+    end
   end
 
   def destroy
