@@ -1,7 +1,10 @@
 class CompaniesController < ApplicationController
 
   def index
-    @companies = Company.all
+    if @current_user
+      @companies = Company.all
+    else
+      
   end
 
   def show
