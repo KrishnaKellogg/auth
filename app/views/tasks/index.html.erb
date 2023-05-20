@@ -1,7 +1,7 @@
 
-<% if @current_user%>
-  <h1>Do the TODOs</h1>
+<h1>Do the TODOs</h1>
 
+<% if @current_user%>
   <%= form_with :model => @task do |form| %>
     <%= form.text_field "description" %>
     <%= form.submit "Add new task" %>
